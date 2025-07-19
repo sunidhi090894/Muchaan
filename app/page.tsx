@@ -34,8 +34,6 @@ export default function MuchaanWebsite() {
     "/images/night-entrance.jpeg",
     "/images/day-entrance.jpeg",
     "/images/entrance-gate.jpeg",
-    "/placeholder.svg?height=800&width=1200&text=Cozy+Seating+Area",
-    "/placeholder.svg?height=800&width=1200&text=Garden+View",
   ]
 
   // Auto-scroll carousel
@@ -411,7 +409,7 @@ export default function MuchaanWebsite() {
             </div>
             <div className="aspect-square relative rounded-lg overflow-hidden">
               <Image
-                src="/placeholder.svg?height=300&width=300"
+                src="/images/day-entrance.jpeg"
                 alt="Gardens at Muchaan"
                 fill
                 className="object-cover hover:scale-105 transition-transform"
