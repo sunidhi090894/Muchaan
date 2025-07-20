@@ -401,7 +401,7 @@ export default function MuchaanWebsite() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             <div className="aspect-square relative rounded-lg overflow-hidden">
               <Image
-                src="/placeholder.svg?height=300&width=300"
+                src="/image_1.png?height=300&width=300"
                 alt="Rooms at Muchaan"
                 fill
                 className="object-cover hover:scale-105 transition-transform"
@@ -409,7 +409,7 @@ export default function MuchaanWebsite() {
             </div>
             <div className="aspect-square relative rounded-lg overflow-hidden">
               <Image
-                src="/images/day-entrance.jpeg"
+                src="/image_2.png?height=300&width=300"
                 alt="Gardens at Muchaan"
                 fill
                 className="object-cover hover:scale-105 transition-transform"
@@ -417,7 +417,7 @@ export default function MuchaanWebsite() {
             </div>
             <div className="aspect-square relative rounded-lg overflow-hidden">
               <Image
-                src="/placeholder.svg?height=300&width=300"
+                src="/image_3.png?height=300&width=300"
                 alt="Bonfire at Muchaan"
                 fill
                 className="object-cover hover:scale-105 transition-transform"
@@ -425,7 +425,7 @@ export default function MuchaanWebsite() {
             </div>
             <div className="aspect-square relative rounded-lg overflow-hidden">
               <Image
-                src="/placeholder.svg?height=300&width=300"
+                src="/image_4.png?height=300&width=300"
                 alt="Sunset at Muchaan"
                 fill
                 className="object-cover hover:scale-105 transition-transform"
@@ -433,7 +433,7 @@ export default function MuchaanWebsite() {
             </div>
             <div className="aspect-square relative rounded-lg overflow-hidden">
               <Image
-                src="/placeholder.svg?height=300&width=300"
+                src="/image_5.png?height=300&width=300"
                 alt="Food at Muchaan"
                 fill
                 className="object-cover hover:scale-105 transition-transform"
@@ -441,7 +441,7 @@ export default function MuchaanWebsite() {
             </div>
             <div className="aspect-square relative rounded-lg overflow-hidden">
               <Image
-                src="/placeholder.svg?height=300&width=300"
+                src="/image_6.png?height=300&width=300"
                 alt="Guest experiences"
                 fill
                 className="object-cover hover:scale-105 transition-transform"
@@ -449,7 +449,7 @@ export default function MuchaanWebsite() {
             </div>
             <div className="aspect-square relative rounded-lg overflow-hidden">
               <Image
-                src="/placeholder.svg?height=300&width=300"
+                src="/image_7.png?height=300&width=300"
                 alt="Lawn area"
                 fill
                 className="object-cover hover:scale-105 transition-transform"
