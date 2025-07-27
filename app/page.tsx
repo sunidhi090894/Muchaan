@@ -213,12 +213,12 @@ export default function MuchaanWebsite() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold text-stone-800 mb-6">About Muchaan</h2>
-              <p className="text-lg text-stone-600 mb-6">Muchaan (ਮੁਚਾਣ) means a cozy, peaceful corner.</p>
+              <p className="text-lg text-stone-600 mb-6">Muchaan (ਮਚਾਣ) means a cozy, peaceful corner.</p>
               <p className="text-base text-stone-600 mb-6 leading-relaxed">
                 Located just 15 minutes from Garhshankar and 1.5 hrs from Chandigarh, Muchaan blends home-style warmth,
                 nature, and quiet luxury in a countryside setting.
               </p>
-              <div className="text-lg text-amber-800 font-medium italic">ਮੁਚਾਣ – ਜਿੱਥੇ ਸੁਆਦ, ਆਰਾਮ ਤੇ ਸੁਕੂਨ ਮਿਲਦੇ ਹਨ।</div>
+              <div className="text-lg text-amber-800 font-medium italic">ਮਚਾਣ – ਜਿੱਥੇ ਸੁਆਦ, ਆਰਾਮ ਤੇ ਸੁਕੂਨ ਮਿਲਦੇ ਹਨ।</div>
               <p className="text-sm text-stone-500 mt-2">Muchaan – Jithe swaad, aaraam te sukoon milde han.</p>
             </div>
             <div className="relative">
@@ -341,7 +341,7 @@ export default function MuchaanWebsite() {
                 <div className="flex items-start gap-3">
                   <Building className="w-6 h-6 text-gray-600 mt-1 flex-shrink-0" />
                   <div>
-                    <h3 className="font-semibold text-stone-800 mb-1">Jejo Village</h3>
+                    <h3 className="font-semibold text-stone-800 mb-1">Jaijon Village</h3>
                     <p className="text-sm text-stone-600 mb-2">Ghost town of Punjab</p>
                     <Badge variant="secondary" className="text-xs">
                       ~1 hr
@@ -501,11 +501,11 @@ export default function MuchaanWebsite() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-stone-600" />
-                <span className="text-stone-700">+91-XXXXXXXXXX</span>
+                <span className="text-stone-700">+91-9999503000</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-stone-600" />
-                <span className="text-stone-700">muchaanresort@gmail.com</span>
+                <span className="text-stone-700">Info@muchaan.com</span>
               </div>
             </div>
           </div>
@@ -570,8 +570,8 @@ export default function MuchaanWebsite() {
               <h4 className="font-semibold text-white mb-4">Contact Info</h4>
               <div className="space-y-2 text-stone-400">
                 <p>Nainwan, near Garhshankar, Punjab</p>
-                <p>+91-XXXXXXXXXX</p>
-                <p>muchaanresort@gmail.com</p>
+                <p>+91-9999503000</p>
+                <p>Info@muchaan.com</p>
               </div>
             </div>
           </div>
