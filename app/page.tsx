@@ -13,9 +13,7 @@ import {
   Trees,
   Mountain,
   Building,
-  ShoppingBag,
   Church,
-  Castle,
   MessageCircle,
   Instagram,
   ExternalLink,
@@ -25,16 +23,13 @@ import {
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 
 export default function MuchaanWebsite() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
 
-  const heroImages = [
-    "/images/night-entrance.jpeg",
-    "/images/day-entrance.jpeg",
-    "/images/entrance-gate.jpeg",
-  ]
+  const heroImages = ["/images/night-entrance.jpeg", "/images/day-entrance.jpeg", "/images/entrance-gate.jpeg"]
 
   // Auto-scroll carousel
   useEffect(() => {
@@ -290,96 +285,120 @@ export default function MuchaanWebsite() {
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-stone-800 text-center mb-12">Explore Nearby</h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Card className="border-stone-200 hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-3">
-                  <Church className="w-6 h-6 text-amber-600 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-stone-800 mb-1">Anandpur Sahib</h3>
-                    <p className="text-sm text-stone-600 mb-2">Historic town & Virasat-e-Khalsa</p>
-                    <Badge variant="secondary" className="text-xs">
-                      ~1.5 hrs
-                    </Badge>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+          <div className="relative">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-2 md:-ml-4">
+                <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                  <Card className="border-stone-200 hover:shadow-lg transition-shadow h-full">
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-3">
+                        <Church className="w-6 h-6 text-amber-600 mt-1 flex-shrink-0" />
+                        <div>
+                          <h3 className="font-semibold text-stone-800 mb-2">Anandpur Sahib</h3>
+                          <p className="text-sm text-stone-600 mb-3">
+                            Historic town & Virasat-e-Khalsa. The birthplace of the Khalsa, this sacred city holds
+                            immense significance in Sikh history and houses the magnificent Virasat-e-Khalsa museum.
+                          </p>
+                          <Badge variant="secondary" className="text-xs">
+                            ~1.5 hrs
+                          </Badge>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
 
-            <Card className="border-stone-200 hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-3">
-                  <Mountain className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-stone-800 mb-1">Nangal Dam</h3>
-                    <p className="text-sm text-stone-600 mb-2">Scenic riverside views</p>
-                    <Badge variant="secondary" className="text-xs">
-                      ~1.5 hrs
-                    </Badge>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                  <Card className="border-stone-200 hover:shadow-lg transition-shadow h-full">
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-3">
+                        <Mountain className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
+                        <div>
+                          <h3 className="font-semibold text-stone-800 mb-2">Bhakra Nangal Dam</h3>
+                          <p className="text-sm text-stone-600 mb-3">
+                            A concrete gravity dam on the Satluj River forming the Gobind Sagar reservoir. The second
+                            tallest dam in Asia, it's an engineering marvel offering scenic riverside views and boating
+                            opportunities.
+                          </p>
+                          <Badge variant="secondary" className="text-xs">
+                            ~1.5 hrs
+                          </Badge>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
 
-            <Card className="border-stone-200 hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-3">
-                  <Church className="w-6 h-6 text-red-600 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-stone-800 mb-1">Naina Devi Temple</h3>
-                    <p className="text-sm text-stone-600 mb-2">Shaktipeeth with views</p>
-                    <Badge variant="secondary" className="text-xs">
-                      ~2 hrs
-                    </Badge>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                  <Card className="border-stone-200 hover:shadow-lg transition-shadow h-full">
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-3">
+                        <Church className="w-6 h-6 text-red-600 mt-1 flex-shrink-0" />
+                        <div>
+                          <h3 className="font-semibold text-stone-800 mb-2">Naina Devi Temple</h3>
+                          <p className="text-sm text-stone-600 mb-3">
+                            One of the 51 Shaktipeeths where limbs of Sati fell on Earth. Located in Bilaspur, this holy
+                            shrine attracts millions of devotees, especially during Navratras and Shravan Ashtami.
+                          </p>
+                          <Badge variant="secondary" className="text-xs">
+                            ~2 hrs
+                          </Badge>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
 
-            <Card className="border-stone-200 hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-3">
-                  <Building className="w-6 h-6 text-gray-600 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-stone-800 mb-1">Jaijon Village</h3>
-                    <p className="text-sm text-stone-600 mb-2">Ghost town of Punjab</p>
-                    <Badge variant="secondary" className="text-xs">
-                      ~1 hr
-                    </Badge>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                  <Card className="border-stone-200 hover:shadow-lg transition-shadow h-full">
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-3">
+                        <Church className="w-6 h-6 text-purple-600 mt-1 flex-shrink-0" />
+                        <div>
+                          <h3 className="font-semibold text-stone-800 mb-2">Khuralgarh Sahib</h3>
+                          <p className="text-sm text-stone-600 mb-3">
+                            Revered as the place visited by Sri Guru Ravidas after being persuaded by Meera Bai for the
+                            upliftment of the weaker section. A significant spiritual site with rich historical
+                            importance.
+                          </p>
+                          <Badge variant="secondary" className="text-xs">
+                            ~1 hr
+                          </Badge>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
 
-            <Card className="border-stone-200 hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-3">
-                  <Castle className="w-6 h-6 text-amber-600 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-stone-800 mb-1">Garhshankar Fort</h3>
-                    <p className="text-sm text-stone-600 mb-2">Local heritage</p>
-                    <Badge variant="secondary" className="text-xs">
-                      15 mins
-                    </Badge>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-stone-200 hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-3">
-                  <ShoppingBag className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-stone-800 mb-1">Nawanshahr Market</h3>
-                    <p className="text-sm text-stone-600 mb-2">For local shopping</p>
-                    <Badge variant="secondary" className="text-xs">
-                      30 mins
-                    </Badge>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                  <Card className="border-stone-200 hover:shadow-lg transition-shadow h-full">
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-3">
+                        <Building className="w-6 h-6 text-gray-600 mt-1 flex-shrink-0" />
+                        <div>
+                          <h3 className="font-semibold text-stone-800 mb-2">Jaijon Village</h3>
+                          <p className="text-sm text-stone-600 mb-3">
+                            Known as the ghost town of Punjab, this abandoned village offers a unique glimpse into rural
+                            history and has become a point of interest for those seeking offbeat destinations.
+                          </p>
+                          <Badge variant="secondary" className="text-xs">
+                            ~1 hr
+                          </Badge>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex" />
+              <CarouselNext className="hidden md:flex" />
+            </Carousel>
           </div>
         </div>
       </section>
