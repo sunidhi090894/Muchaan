@@ -320,7 +320,7 @@ export default function MuchaanWebsite() {
                       <div className="flex items-start gap-3">
                         <Mountain className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
                         <div>
-                          <h3 className="font-semibold text-stone-800 mb-2">Bhakra Nangal Dam</h3>
+                          <h3 className="font-semibold text-stone-800 mb-2">Bhakra Dam</h3>
                           <p className="text-sm text-stone-600 mb-3">
                             A concrete gravity dam on the Satluj River forming the Gobind Sagar reservoir. The second
                             tallest dam in Asia, it's an engineering marvel offering scenic riverside views and boating
@@ -384,8 +384,8 @@ export default function MuchaanWebsite() {
                         <div>
                           <h3 className="font-semibold text-stone-800 mb-2">Jaijon Village</h3>
                           <p className="text-sm text-stone-600 mb-3">
-                            Known as the ghost town of Punjab, this abandoned village offers a unique glimpse into rural
-                            history and has become a point of interest for those seeking offbeat destinations.
+                            Jaijon, once a key trade hub and the last railway link to Himachal, is now known as the ghost town of Punjab.
+                            It offers a glimpse into rural history, is famous for its milk sweet "pede," and still holds traces of royal rule and an old secondary school.
                           </p>
                           <Badge variant="secondary" className="text-xs">
                             ~1 hr
@@ -476,7 +476,7 @@ export default function MuchaanWebsite() {
             </div>
             <div className="aspect-square relative rounded-lg overflow-hidden">
               <Image
-                src="/placeholder.svg?height=300&width=300"
+                src="/PHOTO-2025-07-27-15-41-35.jpg?height=300&width=300" 
                 alt="Peaceful corners"
                 fill
                 className="object-cover hover:scale-105 transition-transform"
