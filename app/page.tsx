@@ -208,7 +208,7 @@ export default function MuchaanWebsite() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold text-stone-800 mb-6">About Muchaan</h2>
-              <p className="text-lg text-stone-600 mb-6">Muchaan (ਮਚਾਣ) means a cozy, peaceful corner.</p>
+              <p className="text-lg text-stone-600 mb-6">Muchaan (ਮਚਾਣ) - In olden days Muchaan was a platform erected in a woods/agricultural fields which was used for hunting and served as watch tower for wild animals to protect the crops.</p>
               <p className="text-base text-stone-600 mb-6 leading-relaxed">
                 Located just 15 minutes from Garhshankar and 1.5 hrs from Chandigarh, Muchaan blends home-style warmth,
                 nature, and quiet luxury in a countryside setting.
@@ -420,7 +420,7 @@ export default function MuchaanWebsite() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             <div className="aspect-square relative rounded-lg overflow-hidden">
               <Image
-                src="/image_1.png?height=300&width=300"
+                src="/image_1.jpeg?height=300&width=300"
                 alt="Rooms at Muchaan"
                 fill
                 className="object-cover hover:scale-105 transition-transform"
@@ -428,7 +428,7 @@ export default function MuchaanWebsite() {
             </div>
             <div className="aspect-square relative rounded-lg overflow-hidden">
               <Image
-                src="/image_2.png?height=300&width=300"
+                src="/image_2.jpeg?height=300&width=300"
                 alt="Gardens at Muchaan"
                 fill
                 className="object-cover hover:scale-105 transition-transform"
@@ -436,7 +436,7 @@ export default function MuchaanWebsite() {
             </div>
             <div className="aspect-square relative rounded-lg overflow-hidden">
               <Image
-                src="/image_3.png?height=300&width=300"
+                src="/image_3.jpeg?height=300&width=300"
                 alt="Bonfire at Muchaan"
                 fill
                 className="object-cover hover:scale-105 transition-transform"
@@ -444,7 +444,7 @@ export default function MuchaanWebsite() {
             </div>
             <div className="aspect-square relative rounded-lg overflow-hidden">
               <Image
-                src="/image_4.png?height=300&width=300"
+                src="/image_4.jpeg?height=300&width=300"
                 alt="Sunset at Muchaan"
                 fill
                 className="object-cover hover:scale-105 transition-transform"
@@ -452,7 +452,7 @@ export default function MuchaanWebsite() {
             </div>
             <div className="aspect-square relative rounded-lg overflow-hidden">
               <Image
-                src="/image_5.png?height=300&width=300"
+                src="/image_5.jpeg?height=300&width=300"
                 alt="Food at Muchaan"
                 fill
                 className="object-cover hover:scale-105 transition-transform"
@@ -460,7 +460,7 @@ export default function MuchaanWebsite() {
             </div>
             <div className="aspect-square relative rounded-lg overflow-hidden">
               <Image
-                src="/image_6.png?height=300&width=300"
+                src="/image_6.jpeg?height=300&width=300"
                 alt="Guest experiences"
                 fill
                 className="object-cover hover:scale-105 transition-transform"
@@ -468,7 +468,7 @@ export default function MuchaanWebsite() {
             </div>
             <div className="aspect-square relative rounded-lg overflow-hidden">
               <Image
-                src="/image_7.png?height=300&width=300"
+                src="/image_7.jpeg?height=300&width=300"
                 alt="Lawn area"
                 fill
                 className="object-cover hover:scale-105 transition-transform"
