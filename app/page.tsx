@@ -179,7 +179,7 @@ export default function MuchaanWebsite() {
 
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4 text-amber-100">
           <h1 className="text-6xl md:text-8xl font-bold mb-4 tracking-wide drop-shadow-lg">MUCHAAN</h1>
-          <p className="text-2xl md:text-3xl mb-6 font-medium drop-shadow-md text-amber-200">Stay. Dine. Unwind.</p>
+          <p className="text-2xl md:text-3xl mb-6 font-medium drop-shadow-md text-amber-200">Stay Dine Unwind</p>
           <p className="text-lg md:text-xl mb-4 max-w-2xl mx-auto drop-shadow-md">
             A peaceful countryside escape in Nainwan, near Garhshankar, Punjab.
           </p>
@@ -214,7 +214,7 @@ export default function MuchaanWebsite() {
                 nature, and quiet luxury in a countryside setting.
               </p>
               <div className="text-lg text-amber-800 font-medium italic">ਮਚਾਣ – ਜਿੱਥੇ ਸੁਆਦ, ਆਰਾਮ ਤੇ ਸੁਕੂਨ ਮਿਲਦੇ ਹਨ।</div>
-              <p className="text-sm text-stone-500 mt-2">Muchaan – Jithe swaad, aaraam te sukoon milde han.</p>
+              {/* <p className="text-sm text-stone-500 mt-2">Muchaan – Jithe swaad, aaraam te sukoon milde han.</p> */}
             </div>
             <div className="relative">
               <Image
