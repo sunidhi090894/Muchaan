@@ -43,18 +43,20 @@ export default function MuchaanWebsite() {
   return (
     <div className="min-h-screen bg-stone-50">
       {/* Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm shadow-sm">
+      <nav className="fixed top-4 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm shadow-sm">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link href="#home" className="flex items-center">
               <Image
-                src="/images/logo.jpeg"
+                src="/images/Muchaan300DPI.png1"
                 alt="Muchaan Resort Logo"
-                width={50}
-                height={50}
-                className="rounded-full"
+                width={48}
+                height={48}
+                className="logo"
+                style={{ objectFit: 'contain' }}
               />
+
               <div className="ml-3">
                 <div className="text-xl font-bold text-amber-400">MUCHAAN</div>
                 <div className="text-xs text-stone-600 hidden sm:block">Stay Dine Unwind</div>

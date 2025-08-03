@@ -11,6 +11,24 @@ body {
     text-wrap: balance;
   }
 }
+.logo {
+  max-width: 100px;     /* Scales for desktop */
+  height: auto;
+  width: 100%;          /* Scales down on mobile */
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    max-width: 120px;
+  }
+}
 
 @layer base {
   :root {
