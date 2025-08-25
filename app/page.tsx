@@ -798,7 +798,7 @@ export default function MuchaanWebsite() {
             A peaceful countryside escape in Nainwan, near Garhshankar, Punjab.
           </p>
           <p className="text-base md:text-lg mb-8 drop-shadow-md">
-            Just 1.5 hours from Chandigarh — perfect for weekend stays, get-togethers, and quiet retreats.
+            Just 100 km away from Chandigarh — perfect for weekend stays, get-togethers, and quiet retreats.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -920,7 +920,7 @@ export default function MuchaanWebsite() {
                             immense significance in Sikh history and houses the magnificent Virasat-e-Khalsa museum.
                           </p>
                           <Badge variant="secondary" className="text-xs">
-                            ~1.5 hrs
+                            ~1 hr
                           </Badge>
                         </div>
                       </div>
@@ -982,7 +982,7 @@ export default function MuchaanWebsite() {
                             importance.
                           </p>
                           <Badge variant="secondary" className="text-xs">
-                            ~1 hr
+                            ~15 mins
                           </Badge>
                         </div>
                       </div>
@@ -1121,7 +1121,11 @@ export default function MuchaanWebsite() {
             </div>
             <div className="flex items-center gap-2 justify-center">
               <CheckCircle className="w-5 h-5 text-green-600" />
-              <span className="text-stone-700">Small celebrations</span>
+              <span className="text-stone-700">celebrations</span>
+            </div>
+            <div className="flex items-center gap-2 justify-center">
+              <CheckCircle className="w-5 h-5 text-green-600" />
+              <span className="text-stone-700">Events</span>
             </div>
           </div>
 
@@ -1164,7 +1168,7 @@ export default function MuchaanWebsite() {
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
               <h3 className="text-2xl font-bold text-white mb-4">MUCHAAN</h3>
-              <p className="text-stone-400 mb-4">Aa jao, thoda jeya sukoon le lo.</p>
+              {/* <p className="text-stone-400 mb-4">Aa jao, thoda jeya sukoon le lo.</p> */}
               <div className="flex gap-4">
                 <Button size="icon" variant="ghost" className="text-stone-400 hover:text-white">
                   <Instagram className="w-5 h-5" />

@@ -12,7 +12,8 @@ body {
   }
 }
 .logo {
-  max-width: 100px;     /* Scales for desktop */
+  padding-top: 10px;
+  max-width: 90px;     /* Scales for desktop */
   height: auto;
   width: 100%;          /* Scales down on mobile */
   object-fit: contain;
