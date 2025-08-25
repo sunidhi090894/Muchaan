@@ -1,8 +1,9 @@
-"use client"
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+"use client";
+
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import {
   MapPin,
   Phone,
@@ -20,25 +21,57 @@ import {
   CheckCircle,
   Menu,
   X,
-} from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+  Sun,
+  Star,
+  Handshake,
+  ShieldCheck,
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+
+// Define a type for the place object
+type Place = {
+  name: string;
+  image: string;
+  description: string;
+};
 
 export default function MuchaanWebsite() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [currentSlide, setCurrentSlide] = useState(0)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [selectedPlace, setSelectedPlace] = useState<Place | null>(null);
 
-  const heroImages = ["/images/night-entrance.jpeg", "/images/day-entrance.jpeg", "/images/entrance-gate.jpeg"]
+  const heroImages = [
+    "/images/night-entrance.jpeg",
+    "/images/day-entrance.jpeg",
+    "/images/entrance-gate.jpeg",
+  ];
 
-  // Auto-scroll carousel
+  // Auto-scroll hero carousel
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroImages.length)
-    }, 4000) // Change slide every 4 seconds
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    }, 4000);
 
-    return () => clearInterval(timer)
-  }, [heroImages.length])
+    return () => clearInterval(timer);
+  }, [heroImages.length]);
+
+  const handlePlaceClick = (place: Place) => {
+    setSelectedPlace(place);
+  };
 
   return (
     <div className="min-h-screen bg-stone-50">
@@ -47,49 +80,75 @@ export default function MuchaanWebsite() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-         
-<Link href="#home" className="flex items-center">
-  <Image 
-    src="/images/Muchaan300DPI.png" 
-    alt="Muchaan Resort Logo" 
-    width={48} // or your preferred size
-    height={48}
-    className="logo"
-    style={{ objectFit: 'contain' }}
-  />
-  <div className="ml-3">
-    <div className="text-xl font-bold text-amber-400">MUCHAAN</div>
-    <div className="text-xs text-stone-600 hidden sm:block">Stay Dine Unwind</div>
-  </div>
-</Link>
+            <Link href="#home" className="flex items-center">
+              <Image
+                src="/images/Muchaan300DPI.png"
+                alt="Muchaan Resort Logo"
+                width={48}
+                height={48}
+                className="logo"
+                style={{ objectFit: "contain" }}
+              />
+              <div className="ml-3">
+                <div className="text-xl font-bold text-amber-400">
+                  MUCHAAN
+                </div>
+                <div className="text-xs text-stone-600 hidden sm:block">
+                  Stay Dine Unwind
+                </div>
+              </div>
+            </Link>
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              <Link href="#home" className="text-amber-100 hover:text-amber-300 transition-colors">
+              <Link
+                href="#home"
+                className="text-amber-100 hover:text-amber-300 transition-colors"
+              >
                 Home
               </Link>
-              <Link href="#about" className="text-amber-100 hover:text-amber-300 transition-colors">
+              <Link
+                href="#about"
+                className="text-amber-100 hover:text-amber-300 transition-colors"
+              >
                 About
               </Link>
-              <Link href="#gallery" className="text-amber-100 hover:text-amber-300 transition-colors">
+              <Link
+                href="#gallery"
+                className="text-amber-100 hover:text-amber-300 transition-colors"
+              >
                 Gallery
               </Link>
-              <Link href="#explore" className="text-amber-100 hover:text-amber-300 transition-colors">
+              <Link
+                href="#explore"
+                className="text-amber-100 hover:text-amber-300 transition-colors"
+              >
                 Explore
               </Link>
-              <Link href="#contact" className="text-amber-100 hover:text-amber-300 transition-colors">
+              <Link
+                href="#contact"
+                className="text-amber-100 hover:text-amber-300 transition-colors"
+              >
                 Contact
               </Link>
-              <Button className="bg-amber-600 hover:bg-amber-700 text-white">Book Now</Button>
+              <Button className="bg-amber-600 hover:bg-amber-700 text-white">
+                Book Now
+              </Button>
             </div>
-
             {/* Mobile menu button */}
             <div className="md:hidden">
-              <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                {isMenuOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
               </Button>
             </div>
           </div>
-
           {/* Mobile Navigation */}
           {isMenuOpen && (
             <div className="md:hidden bg-black/95 border-t border-stone-200">
@@ -130,7 +189,9 @@ export default function MuchaanWebsite() {
                   Contact
                 </Link>
                 <div className="px-3 py-2">
-                  <Button className="w-full bg-amber-700 hover:bg-amber-800 text-white">Book Now</Button>
+                  <Button className="w-full bg-amber-700 hover:bg-amber-800 text-white">
+                    Book Now
+                  </Button>
                 </div>
               </div>
             </div>
@@ -140,13 +201,19 @@ export default function MuchaanWebsite() {
 
       {/* Floating WhatsApp Button */}
       <div className="fixed bottom-6 right-6 z-50">
-        <Button size="icon" className="w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 shadow-lg">
+        <Button
+          size="icon"
+          className="w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 shadow-lg"
+        >
           <MessageCircle className="w-6 h-6" />
         </Button>
       </div>
 
       {/* Hero Section with Carousel */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section
+        id="home"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      >
         {/* Carousel Background */}
         <div className="absolute inset-0 z-0">
           {heroImages.map((image, index) => (
@@ -173,23 +240,33 @@ export default function MuchaanWebsite() {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all ${index === currentSlide ? "bg-white" : "bg-white/50"}`}
+              className={`w-3 h-3 rounded-full transition-all ${
+                index === currentSlide ? "bg-white" : "bg-white/50"
+              }`}
             />
           ))}
         </div>
 
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4 text-amber-100">
-          <h1 className="text-6xl md:text-8xl font-bold mb-4 tracking-wide drop-shadow-lg">MUCHAAN</h1>
-          <p className="text-2xl md:text-3xl mb-6 font-medium drop-shadow-md text-amber-200">Stay Dine Unwind</p>
+          <h1 className="text-6xl md:text-8xl font-bold mb-4 tracking-wide drop-shadow-lg">
+            MUCHAAN
+          </h1>
+          <p className="text-2xl md:text-3xl mb-6 font-medium drop-shadow-md text-amber-200">
+            Stay Dine Unwind
+          </p>
           <p className="text-lg md:text-xl mb-4 max-w-2xl mx-auto drop-shadow-md">
             A peaceful countryside escape in Nainwan, near Garhshankar, Punjab.
           </p>
           <p className="text-base md:text-lg mb-8 drop-shadow-md">
-            Just 100 km away from Chandigarh — perfect for weekend stays, get-togethers, and quiet retreats.
+            Just 100 km away from Chandigarh — perfect for weekend stays,
+            get-togethers, and quiet retreats.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-amber-700 hover:bg-amber-800 text-white px-8 py-3 text-lg shadow-lg">
+            <Button
+              size="lg"
+              className="bg-amber-700 hover:bg-amber-800 text-white px-8 py-3 text-lg shadow-lg"
+            >
               Book Your Stay
             </Button>
             <Button
@@ -208,14 +285,22 @@ export default function MuchaanWebsite() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-stone-800 mb-6">About Muchaan</h2>
-              <p className="text-lg text-stone-600 mb-6">Muchaan (ਮਚਾਣ) - In olden days Muchaan was a platform erected in a woods/agricultural fields which was used for hunting and served as watch tower for wild animals to protect the crops.</p>
-              <p className="text-base text-stone-600 mb-6 leading-relaxed">
-                Located just 15 minutes from Garhshankar and 1.5 hrs from Chandigarh, Muchaan blends home-style warmth,
-                nature, and quiet luxury in a countryside setting.
+              <h2 className="text-4xl font-bold text-stone-800 mb-6">
+                About Muchaan
+              </h2>
+              <p className="text-lg text-stone-600 mb-6">
+                Muchaan (ਮਚਾਣ) - In olden days Muchaan was a platform erected
+                in a woods/agricultural fields which was used for hunting and
+                served as watch tower for wild animals to protect the crops.
               </p>
-              <div className="text-lg text-amber-800 font-medium italic">ਮਚਾਣ – ਜਿੱਥੇ ਸੁਆਦ, ਆਰਾਮ ਤੇ ਸੁਕੂਨ ਮਿਲਦੇ ਹਨ।</div>
-              {/* <p className="text-sm text-stone-500 mt-2">Muchaan – Jithe swaad, aaraam te sukoon milde han.</p> */}
+              <p className="text-base text-stone-600 mb-6 leading-relaxed">
+                Located just 15 minutes from Garhshankar and 1.5 hrs from
+                Chandigarh, Muchaan blends home-style warmth, nature, and quiet
+                luxury in a countryside setting.
+              </p>
+              <div className="text-lg text-amber-800 font-medium italic">
+                ਮਚਾਣ – ਜਿੱਥੇ ਸੁਆਦ, ਆਰਾਮ ਤੇ ਸੁਕੂਨ ਮਿਲਦੇ ਹਨ।
+              </div>
             </div>
             <div className="relative">
               <Image
@@ -233,7 +318,9 @@ export default function MuchaanWebsite() {
       {/* Why Choose Muchaan */}
       <section className="py-20 bg-stone-50">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-stone-800 text-center mb-12">Why Choose Muchaan</h2>
+          <h2 className="text-4xl font-bold text-stone-800 text-center mb-12">
+            Why Choose Muchaan
+          </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <Card className="bg-white border-stone-200 hover:shadow-lg transition-shadow">
@@ -241,9 +328,12 @@ export default function MuchaanWebsite() {
                 <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Users className="w-8 h-8 text-amber-700" />
                 </div>
-                <h3 className="text-xl font-semibold text-stone-800 mb-3">Comfortable Stays</h3>
+                <h3 className="text-xl font-semibold text-stone-800 mb-3">
+                  Comfortable Stays
+                </h3>
                 <p className="text-stone-600 text-sm">
-                  Rustic charm with modern comforts — ideal for families, couples, or groups.
+                  Rustic charm with modern comforts — ideal for families,
+                  couples, or groups.
                 </p>
               </CardContent>
             </Card>
@@ -253,8 +343,12 @@ export default function MuchaanWebsite() {
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Utensils className="w-8 h-8 text-green-700" />
                 </div>
-                <h3 className="text-xl font-semibold text-stone-800 mb-3">Home-style Indian Meals</h3>
-                <p className="text-stone-600 text-sm">Punjabi favorites and fresh seasonal dishes.</p>
+                <h3 className="text-xl font-semibold text-stone-800 mb-3">
+                  Home-style Indian Meals
+                </h3>
+                <p className="text-stone-600 text-sm">
+                  Punjabi favorites and fresh seasonal dishes.
+                </p>
               </CardContent>
             </Card>
 
@@ -263,8 +357,12 @@ export default function MuchaanWebsite() {
                 <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Trees className="w-8 h-8 text-emerald-700" />
                 </div>
-                <h3 className="text-xl font-semibold text-stone-800 mb-3">Private Lawn for Gatherings</h3>
-                <p className="text-stone-600 text-sm">Ideal for intimate events and quiet celebrations.</p>
+                <h3 className="text-xl font-semibold text-stone-800 mb-3">
+                  Private Lawn for Gatherings
+                </h3>
+                <p className="text-stone-600 text-sm">
+                  Ideal for intimate events and quiet celebrations.
+                </p>
               </CardContent>
             </Card>
 
@@ -273,38 +371,54 @@ export default function MuchaanWebsite() {
                 <div className="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Camera className="w-8 h-8 text-rose-700" />
                 </div>
-                <h3 className="text-xl font-semibold text-stone-800 mb-3">Photo-Ready Corners</h3>
-                <p className="text-stone-600 text-sm">Rustic and natural spaces for photos and Instagram.</p>
+                <h3 className="text-xl font-semibold text-stone-800 mb-3">
+                  Photo-Ready Corners
+                </h3>
+                <p className="text-stone-600 text-sm">
+                  Rustic and natural spaces for photos and Instagram.
+                </p>
               </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* Explore Nearby */}
+      {/* Explore Nearby Section with Dialog */}
       <section id="explore" className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-stone-800 text-center mb-12">Explore Nearby</h2>
-
-          <div className="relative">
-            <Carousel
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              className="w-full"
-            >
-              <CarouselContent className="-ml-2 md:-ml-4">
-                <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                  <Card className="border-stone-200 hover:shadow-lg transition-shadow h-full">
+        <div className="relative max-w-7xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-stone-800 text-center mb-12">
+            Explore Nearby
+          </h2>
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {/* Anandpur Sahib */}
+              <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3 h-full">
+                <div
+                  onClick={() =>
+                    handlePlaceClick({
+                      name: "Anandpur Sahib",
+                      image: "/images/anandpur_sahib.jpeg",
+                      description:
+                        "Anandpur Sahib is a city in the Rupnagar district of Punjab, India, known as the 'City of Bliss'. It's a sacred site in Sikhism, founded in 1665 by Guru Tegh Bahadur, the ninth Sikh Guru. The city is closely linked to Sikh history and culture, particularly the founding of the Khalsa Panth by Guru Gobind Singh, the tenth Sikh Guru, in 1699 ¹ ². \n\n*Key Attractions:*\n\n- *Takht Sri Kesgarh Sahib*: One of the five Takhts (thrones of authority) in Sikhism, marking the birthplace of the Khalsa.\n- *Gurdwara Anandgarh Sahib*: A significant gurdwara associated with Guru Gobind Singh's life and the Sikh struggle.\n- *Gurdwara Bhora Sahib*: Part of the Gurdwara Guru Ka Mahal Complex, where Guru Gobind Singh lived with his family.\n- *Hola Mohalla Festival*: A vibrant celebration showcasing martial arts, mock battles, and spiritual recitals, held annually.\n- *Virasat-e-Khalsa*: A museum showcasing Sikh history and culture.\n- *Anandpur Sahib Waterfall*: A scenic spot for nature lovers.\n\nThe city is renowned for its spiritual and historical significance, reflecting Sikh traditions and Punjabi culture. Visitors can experience the vibrant culture by attending local events or visiting cultural centers.\n\nThe ideal time to visit Anandpur Sahib is during winter (October to March), with pleasant weather and temperatures between 10°C to 25°C .",
+                    })
+                  }
+                >
+                  <Card className="border-stone-200 hover:shadow-lg transition-shadow h-full min-h-[250px] cursor-pointer">
                     <CardContent className="p-6">
                       <div className="flex items-start gap-3">
                         <Church className="w-6 h-6 text-amber-600 mt-1 flex-shrink-0" />
                         <div>
-                          <h3 className="font-semibold text-stone-800 mb-2">Anandpur Sahib</h3>
+                          <h3 className="font-semibold text-stone-800 mb-2">
+                            Anandpur Sahib
+                          </h3>
                           <p className="text-sm text-stone-600 mb-3">
-                            Historic town & Virasat-e-Khalsa. The birthplace of the Khalsa, this sacred city holds
-                            immense significance in Sikh history and houses the magnificent Virasat-e-Khalsa museum.
+                            Anandpur Sahib is a city in the Rupnagar district of Punjab, India, known as the...
                           </p>
                           <Badge variant="secondary" className="text-xs">
                             ~1 hr
@@ -313,39 +427,64 @@ export default function MuchaanWebsite() {
                       </div>
                     </CardContent>
                   </Card>
-                </CarouselItem>
+                </div>
+              </CarouselItem>
 
-                <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                  <Card className="border-stone-200 hover:shadow-lg transition-shadow h-full">
+              {/* Bhakra Dam */}
+              <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3 h-full">
+                <div
+                  onClick={() =>
+                    handlePlaceClick({
+                      name: "Bhakra Dam",
+                      image: "/images/bhakra_dam.jpeg",
+                      description:
+                        "The Bhakra Dam, located on the Sutlej River in Himachal Pradesh, India, has a rich history dating back to the early 20th century. Here's a brief overview ¹ ² ³:\n- *Conception and Planning*: The idea of building a dam at Bhakra was first proposed in 1915 by F.E. Gwyther, the then Chief Engineer. A detailed project report was prepared in 1919, but it wasn't until 1944 that the project gained momentum when the Punjab government signed an agreement with the Raja of Bilaspur.\n- *Construction*: Construction began in 1948 and was completed by the end of 1963, with successive stages finished by the early 1970s.\n- *Design and Engineering*: The dam was designed by Rai Bahadur Kunwar Sen Gupta, with assistance from American engineer Harvey Slocum and his team from the United States Bureau of Reclamation.\n- *Key Features*: The Bhakra Dam is a 226-meter-high concrete gravity dam, creating the Gobind Sagar reservoir. It provides irrigation to over 40,000 square kilometers of land and has two hydroelectric power stations with a total capacity of 1,325 MW.\n- *Management*: The Bhakra Beas Management Board (BBMB) was constituted in 1966 to manage the operation and maintenance of the dam, as well as regulate the supply of water and power to the states of Punjab, Haryana, Rajasthan, Himachal Pradesh, and Delhi.\n-  Bhakra Dam is a symbol of India's progress and a major tourist attraction.",
+                    })
+                  }
+                >
+                  <Card className="border-stone-200 hover:shadow-lg transition-shadow h-full min-h-[250px] cursor-pointer">
                     <CardContent className="p-6">
                       <div className="flex items-start gap-3">
-                        <Mountain className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
+                        <ShieldCheck className="w-6 h-6 text-amber-600 mt-1 flex-shrink-0" />
                         <div>
-                          <h3 className="font-semibold text-stone-800 mb-2">Bhakra Dam</h3>
+                          <h3 className="font-semibold text-stone-800 mb-2">
+                            Bhakra Dam
+                          </h3>
                           <p className="text-sm text-stone-600 mb-3">
-                            A concrete gravity dam on the Satluj River forming the Gobind Sagar reservoir. The second
-                            tallest dam in Asia, it's an engineering marvel offering scenic riverside views and boating
-                            opportunities.
+                            The Bhakra Dam, located on the Sutlej River in Himachal Pradesh, India, has a rich history dating back to the early...
                           </p>
                           <Badge variant="secondary" className="text-xs">
-                            ~1.5 hrs
+                            ~2 hr
                           </Badge>
                         </div>
                       </div>
                     </CardContent>
                   </Card>
-                </CarouselItem>
+                </div>
+              </CarouselItem>
 
-                <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                  <Card className="border-stone-200 hover:shadow-lg transition-shadow h-full">
+              {/* Naina Devi Temple */}
+              <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3 h-full">
+                <div
+                  onClick={() =>
+                    handlePlaceClick({
+                      name: "Naina Devi Temple",
+                      image: "/images/naina_devi_temple.jpeg",
+                      description:
+                        "Naina Devi Temple is a revered Hindu shrine located in the Bilaspur district of Himachal Pradesh, India. It's situated atop a hill, offering breathtaking views of the Gobind Sagar Lake and the surrounding mountains. This temple is one of the 51 Shakti Peethas, making it a significant pilgrimage site for devotees of Goddess Shakti.\n\n*Key Features:*\n\n- *Dedication*: The temple is dedicated to Goddess Naina Devi, an incarnation of Goddess Durga, believed to be the site where Sati's eyes fell.\n- *Architecture*: The temple showcases a blend of traditional and modern design elements, featuring intricate carvings, vibrant colors, and ornate decorations.\n- *Festivals*: The temple celebrates various festivals, including Navratri, Diwali, Holi, and Janmashtami, with great enthusiasm.\n\n*Visiting Information:*\n\n- *Timings*: The temple is open from 5:00 AM to 10:00 PM, with aarti timings at 6:00 AM and 8:00 PM.\n- *Best Time to Visit*: March to June and September to November are ideal, avoiding the monsoon season.\n\n*Nearby Attractions:*\n\n- *Gobind Sagar Lake*: A scenic lake created by the Bhakra Nangal Dam.\n- *Bhakra Dam*: One of the highest gravity dams in the world.\n- *Kandrour Bridge*: A notable bridge in the region.\n- *Baba Balak Nath Temple*: A significant Hindu temple nearby ¹ ² ³.",
+                    })
+                  }
+                >
+                  <Card className="border-stone-200 hover:shadow-lg transition-shadow h-full min-h-[250px] cursor-pointer">
                     <CardContent className="p-6">
                       <div className="flex items-start gap-3">
                         <Church className="w-6 h-6 text-red-600 mt-1 flex-shrink-0" />
                         <div>
-                          <h3 className="font-semibold text-stone-800 mb-2">Naina Devi Temple</h3>
+                          <h3 className="font-semibold text-stone-800 mb-2">
+                            Naina Devi Temple
+                          </h3>
                           <p className="text-sm text-stone-600 mb-3">
-                            One of the 51 Shaktipeeths where limbs of Sati fell on Earth. Located in Bilaspur, this holy
-                            shrine attracts millions of devotees, especially during Navratras and Shravan Ashtami.
+                            Naina Devi Temple is a revered Hindu shrine located in the Bilaspur district of Himachal Pradesh, India. It...
                           </p>
                           <Badge variant="secondary" className="text-xs">
                             ~2 hrs
@@ -354,19 +493,31 @@ export default function MuchaanWebsite() {
                       </div>
                     </CardContent>
                   </Card>
-                </CarouselItem>
+                </div>
+              </CarouselItem>
 
-                <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                  <Card className="border-stone-200 hover:shadow-lg transition-shadow h-full">
+              {/* Khuralgarh Sahib */}
+              <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3 h-full">
+                <div
+                  onClick={() =>
+                    handlePlaceClick({
+                      name: "Khuralgarh Sahib",
+                      image: "/images/khuralgarh_sahib.jpeg",
+                      description:
+                        "Kharal Garh Sahib, also known as Shri Khuralgarh Sahib, is a significant historical and religious site located in Kharali village, near Garhshankar, in the Hoshiarpur district of Punjab, India.\n\n*Significance:*\n\n- *Guru Ravidass Memorial*: The site is believed to have been visited by Guru Ravidass, a prominent spiritual figure, who came here to uplift the weaker sections of society. A memorial is being built in his honor, spread over 14.4 acres of land.\n- *Minar-e-Begampura*: A 151-foot-high monument, part of the Guru Ravidass Memorial, symbolizing the teachings of Guru Ravidass. The complex will include a spacious congregation hall that can accommodate up to 10,000 pilgrims.\n- *Cultural Importance*: Shri Khuralgarh Sahib is considered a symbol of spiritual and cultural heritage.",
+                    })
+                  }
+                >
+                  <Card className="border-stone-200 hover:shadow-lg transition-shadow h-full min-h-[250px] cursor-pointer">
                     <CardContent className="p-6">
                       <div className="flex items-start gap-3">
                         <Church className="w-6 h-6 text-purple-600 mt-1 flex-shrink-0" />
                         <div>
-                          <h3 className="font-semibold text-stone-800 mb-2">Khuralgarh Sahib</h3>
+                          <h3 className="font-semibold text-stone-800 mb-2">
+                            Khuralgarh Sahib
+                          </h3>
                           <p className="text-sm text-stone-600 mb-3">
-                            Revered as the place visited by Sri Guru Ravidas after being persuaded by Meera Bai for the
-                            upliftment of the weaker section. A significant spiritual site with rich historical
-                            importance.
+                            Kharal Garh Sahib, also known as Shri Khuralgarh Sahib, is a significant historical and religious site...
                           </p>
                           <Badge variant="secondary" className="text-xs">
                             ~15 mins
@@ -375,18 +526,31 @@ export default function MuchaanWebsite() {
                       </div>
                     </CardContent>
                   </Card>
-                </CarouselItem>
+                </div>
+              </CarouselItem>
 
-                <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                  <Card className="border-stone-200 hover:shadow-lg transition-shadow h-full">
+              {/* Jaijon Village */}
+              <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3 h-full">
+                <div
+                  onClick={() =>
+                    handlePlaceClick({
+                      name: "Jaijon Village",
+                      image: "/images/jaijon_village.jpeg",
+                      description:
+                        'Jaijon, a village in Punjab\'s Hoshiarpur district, has a rich history dating back centuries. Here\'s a brief overview.\n- *Ancient Roots*: Jaijon is believed to have been founded by a revered elder named Jeju Shah, from whom the village got its name. The area has a history of being a significant cultural center, with roots tracing back to the 11th century or possibly even earlier, with some accounts linking it to the time of the Pandavas.\n- *Strategic Trade Hub*: Jaijon was a crucial trade hub, connecting Punjab to Himachal Pradesh. Its strategic location made it a key route for transporting goods, with materials being sent to Himachal via horses and camels due to the lack of proper road links.\n- *Railway Connection*: Before independence, Jaijon was connected by railways, with it being the last station before entering Himachal. This facilitated trade and commerce, making Jaijon a bustling commercial center.\n- *Cultural Significance*: The village has a strong cultural heritage, with ancient temples, a senior secondary school, and traditional sweets like "pede" made from milk, which Jaijon is famous for.\n- The village has 242 households left which was a busy township once where old Havelis stands intact but vacant for years now.',
+                    })
+                  }
+                >
+                  <Card className="border-stone-200 hover:shadow-lg transition-shadow h-full min-h-[250px] cursor-pointer">
                     <CardContent className="p-6">
                       <div className="flex items-start gap-3">
                         <Building className="w-6 h-6 text-gray-600 mt-1 flex-shrink-0" />
                         <div>
-                          <h3 className="font-semibold text-stone-800 mb-2">Jaijon Village</h3>
+                          <h3 className="font-semibold text-stone-800 mb-2">
+                            Jaijon Village
+                          </h3>
                           <p className="text-sm text-stone-600 mb-3">
-                            Jaijon, once a key trade hub and the last railway link to Himachal, is now known as the ghost town of Punjab.
-                            It offers a glimpse into rural history, is famous for its milk sweet "pede," and still holds traces of royal rule and an old secondary school.
+                            Jaijon, a village in Punjab's Hoshiarpur district, has a rich history dating back centuries....
                           </p>
                           <Badge variant="secondary" className="text-xs">
                             ~1 hr
@@ -395,12 +559,12 @@ export default function MuchaanWebsite() {
                       </div>
                     </CardContent>
                   </Card>
-                </CarouselItem>
-              </CarouselContent>
-              <CarouselPrevious className="hidden md:flex" />
-              <CarouselNext className="hidden md:flex" />
-            </Carousel>
-          </div>
+                </div>
+              </CarouselItem>
+            </CarouselContent>
+            <CarouselPrevious className="-left-12 top-1/2 -translate-y-1/2" />
+            <CarouselNext className="-right-12 top-1/2 -translate-y-1/2" />
+          </Carousel>
         </div>
       </section>
 
@@ -477,7 +641,7 @@ export default function MuchaanWebsite() {
             </div>
             <div className="aspect-square relative rounded-lg overflow-hidden">
               <Image
-                src="/PHOTO-2025-07-27-15-41-35.jpg?height=300&width=300" 
+                src="/PHOTO-2025-07-27-15-41-35.jpg?height=300&width=300"
                 alt="Peaceful corners"
                 fill
                 className="object-cover hover:scale-105 transition-transform"
@@ -490,8 +654,12 @@ export default function MuchaanWebsite() {
       {/* Plan Your Visit */}
       <section id="contact" className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-stone-800 mb-8">Plan Your Visit</h2>
-          <p className="text-lg text-stone-600 mb-8">Muchaan is ideal for:</p>
+          <h2 className="text-4xl font-bold text-stone-800 mb-8">
+            Plan Your Visit
+          </h2>
+          <p className="text-lg text-stone-600 mb-8">
+            Muchaan is ideal for:
+          </p>
 
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
             <div className="flex items-center gap-2 justify-center">
@@ -519,7 +687,9 @@ export default function MuchaanWebsite() {
           <div className="bg-stone-50 rounded-lg p-8 mb-8">
             <div className="flex items-center justify-center gap-2 mb-4">
               <MapPin className="w-5 h-5 text-amber-600" />
-              <span className="text-lg font-medium text-stone-800">Nainwan, near Garhshankar, Punjab</span>
+              <span className="text-lg font-medium text-stone-800">
+                Nainwan, near Garhshankar, Punjab
+              </span>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
@@ -535,7 +705,10 @@ export default function MuchaanWebsite() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-amber-700 hover:bg-amber-800 text-white px-8 py-3">
+            <Button
+              size="lg"
+              className="bg-amber-700 hover:bg-amber-800 text-white px-8 py-3"
+            >
               Book Now
             </Button>
             <Button
@@ -549,62 +722,645 @@ export default function MuchaanWebsite() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-stone-800 text-stone-200 py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
-            <div>
-              <h3 className="text-2xl font-bold text-white mb-4">MUCHAAN</h3>
-              {/* <p className="text-stone-400 mb-4">Aa jao, thoda jeya sukoon le lo.</p> */}
-              <div className="flex gap-4">
-                <Button size="icon" variant="ghost" className="text-stone-400 hover:text-white">
-                  <Instagram className="w-5 h-5" />
-                </Button>
-                <Button size="icon" variant="ghost" className="text-stone-400 hover:text-white">
-                  <MessageCircle className="w-5 h-5" />
-                </Button>
-                <Button size="icon" variant="ghost" className="text-stone-400 hover:text-white">
-                  <ExternalLink className="w-5 h-5" />
-                </Button>
-              </div>
+      {/* Dialog for displaying place details */}
+      <Dialog open={!!selectedPlace} onOpenChange={() => setSelectedPlace(null)}>
+        <DialogContent className="max-w-md p-6 rounded-lg shadow-2xl">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold">
+              {selectedPlace?.name}
+            </DialogTitle>
+          </DialogHeader>
+          {selectedPlace && (
+            <div className="mt-4 overflow-y-auto max-h-[70vh]">
+              <Image
+                src={selectedPlace.image}
+                alt={selectedPlace.name}
+                width={250}
+                height={200}
+                className="rounded-lg mb-4 object-cover w-full h-auto mx-auto"
+              />
+              <p className="text-base leading-relaxed text-stone-700 whitespace-pre-line">
+                {selectedPlace.description}
+              </p>
             </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-4">Quick Links</h4>
-              <div className="space-y-2">
-                <Link href="#" className="block text-stone-400 hover:text-white transition-colors">
-                  Home
-                </Link>
-                <Link href="#" className="block text-stone-400 hover:text-white transition-colors">
-                  About
-                </Link>
-                <Link href="#" className="block text-stone-400 hover:text-white transition-colors">
-                  Gallery
-                </Link>
-                <Link href="#" className="block text-stone-400 hover:text-white transition-colors">
-                  Explore
-                </Link>
-                <Link href="#" className="block text-stone-400 hover:text-white transition-colors">
-                  Contact
-                </Link>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-4">Contact Info</h4>
-              <div className="space-y-2 text-stone-400">
-                <p>Nainwan, near Garhshankar, Punjab</p>
-                <p>+91-9999503000</p>
-                <p>Info@muchaan.com</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-stone-700 pt-8 text-center text-stone-400">
-            <p>&copy; 2025 Muchaan. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
-  )
+  );
 }
+
+
+
+
+
+// "use client"
+// import { useState, useEffect } from "react"
+// import { Button } from "@/components/ui/button"
+// import { Card, CardContent } from "@/components/ui/card"
+// import { Badge } from "@/components/ui/badge"
+// import {
+//   MapPin,
+//   Phone,
+//   Mail,
+//   Users,
+//   Utensils,
+//   Camera,
+//   Trees,
+//   Mountain,
+//   Building,
+//   Church,
+//   MessageCircle,
+//   Instagram,
+//   ExternalLink,
+//   CheckCircle,
+//   Menu,
+//   X,
+// } from "lucide-react"
+// import Image from "next/image"
+// import Link from "next/link"
+// import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+
+// export default function MuchaanWebsite() {
+//   const [isMenuOpen, setIsMenuOpen] = useState(false)
+//   const [currentSlide, setCurrentSlide] = useState(0)
+
+//   const heroImages = ["/images/night-entrance.jpeg", "/images/day-entrance.jpeg", "/images/entrance-gate.jpeg"]
+
+//   // Auto-scroll carousel
+//   useEffect(() => {
+//     const timer = setInterval(() => {
+//       setCurrentSlide((prev) => (prev + 1) % heroImages.length)
+//     }, 4000) // Change slide every 4 seconds
+
+//     return () => clearInterval(timer)
+//   }, [heroImages.length])
+
+//   return (
+//     <div className="min-h-screen bg-stone-50">
+//       {/* Navigation Bar */}
+//       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm shadow-sm">
+//         <div className="max-w-7xl mx-auto px-4">
+//           <div className="flex items-center justify-between h-16">
+//             {/* Logo */}
+         
+// <Link href="#home" className="flex items-center">
+//   <Image 
+//     src="/images/Muchaan300DPI.png" 
+//     alt="Muchaan Resort Logo" 
+//     width={48} // or your preferred size
+//     height={48}
+//     className="logo"
+//     style={{ objectFit: 'contain' }}
+//   />
+//   <div className="ml-3">
+//     <div className="text-xl font-bold text-amber-400">MUCHAAN</div>
+//     <div className="text-xs text-stone-600 hidden sm:block">Stay Dine Unwind</div>
+//   </div>
+// </Link>
+//             {/* Desktop Navigation */}
+//             <div className="hidden md:flex items-center space-x-8">
+//               <Link href="#home" className="text-amber-100 hover:text-amber-300 transition-colors">
+//                 Home
+//               </Link>
+//               <Link href="#about" className="text-amber-100 hover:text-amber-300 transition-colors">
+//                 About
+//               </Link>
+//               <Link href="#gallery" className="text-amber-100 hover:text-amber-300 transition-colors">
+//                 Gallery
+//               </Link>
+//               <Link href="#explore" className="text-amber-100 hover:text-amber-300 transition-colors">
+//                 Explore
+//               </Link>
+//               <Link href="#contact" className="text-amber-100 hover:text-amber-300 transition-colors">
+//                 Contact
+//               </Link>
+//               <Button className="bg-amber-600 hover:bg-amber-700 text-white">Book Now</Button>
+//             </div>
+
+//             {/* Mobile menu button */}
+//             <div className="md:hidden">
+//               <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+//                 {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+//               </Button>
+//             </div>
+//           </div>
+
+//           {/* Mobile Navigation */}
+//           {isMenuOpen && (
+//             <div className="md:hidden bg-black/95 border-t border-stone-200">
+//               <div className="px-2 pt-2 pb-3 space-y-1">
+//                 <Link
+//                   href="#home"
+//                   className="block px-3 py-2 text-stone-700 hover:text-amber-700 transition-colors"
+//                   onClick={() => setIsMenuOpen(false)}
+//                 >
+//                   Home
+//                 </Link>
+//                 <Link
+//                   href="#about"
+//                   className="block px-3 py-2 text-stone-700 hover:text-amber-700 transition-colors"
+//                   onClick={() => setIsMenuOpen(false)}
+//                 >
+//                   About
+//                 </Link>
+//                 <Link
+//                   href="#gallery"
+//                   className="block px-3 py-2 text-stone-700 hover:text-amber-700 transition-colors"
+//                   onClick={() => setIsMenuOpen(false)}
+//                 >
+//                   Gallery
+//                 </Link>
+//                 <Link
+//                   href="#explore"
+//                   className="block px-3 py-2 text-stone-700 hover:text-amber-700 transition-colors"
+//                   onClick={() => setIsMenuOpen(false)}
+//                 >
+//                   Explore
+//                 </Link>
+//                 <Link
+//                   href="#contact"
+//                   className="block px-3 py-2 text-stone-700 hover:text-amber-700 transition-colors"
+//                   onClick={() => setIsMenuOpen(false)}
+//                 >
+//                   Contact
+//                 </Link>
+//                 <div className="px-3 py-2">
+//                   <Button className="w-full bg-amber-700 hover:bg-amber-800 text-white">Book Now</Button>
+//                 </div>
+//               </div>
+//             </div>
+//           )}
+//         </div>
+//       </nav>
+
+//       {/* Floating WhatsApp Button */}
+//       <div className="fixed bottom-6 right-6 z-50">
+//         <Button size="icon" className="w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 shadow-lg">
+//           <MessageCircle className="w-6 h-6" />
+//         </Button>
+//       </div>
+
+//       {/* Hero Section with Carousel */}
+//       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+//         {/* Carousel Background */}
+//         <div className="absolute inset-0 z-0">
+//           {heroImages.map((image, index) => (
+//             <div
+//               key={index}
+//               className={`absolute inset-0 transition-opacity duration-1000 ${
+//                 index === currentSlide ? "opacity-100" : "opacity-0"
+//               }`}
+//             >
+//               <Image
+//                 src={image || "/placeholder.svg"}
+//                 alt={`Muchaan Resort - Slide ${index + 1}`}
+//                 fill
+//                 className="object-cover"
+//               />
+//               <div className="absolute inset-0 bg-black/50" />
+//             </div>
+//           ))}
+//         </div>
+
+//         {/* Carousel Indicators */}
+//         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-2">
+//           {heroImages.map((_, index) => (
+//             <button
+//               key={index}
+//               onClick={() => setCurrentSlide(index)}
+//               className={`w-3 h-3 rounded-full transition-all ${index === currentSlide ? "bg-white" : "bg-white/50"}`}
+//             />
+//           ))}
+//         </div>
+
+//         <div className="relative z-10 text-center max-w-4xl mx-auto px-4 text-amber-100">
+//           <h1 className="text-6xl md:text-8xl font-bold mb-4 tracking-wide drop-shadow-lg">MUCHAAN</h1>
+//           <p className="text-2xl md:text-3xl mb-6 font-medium drop-shadow-md text-amber-200">Stay Dine Unwind</p>
+//           <p className="text-lg md:text-xl mb-4 max-w-2xl mx-auto drop-shadow-md">
+//             A peaceful countryside escape in Nainwan, near Garhshankar, Punjab.
+//           </p>
+//           <p className="text-base md:text-lg mb-8 drop-shadow-md">
+//             Just 100 km away from Chandigarh — perfect for weekend stays, get-togethers, and quiet retreats.
+//           </p>
+
+//           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+//             <Button size="lg" className="bg-amber-700 hover:bg-amber-800 text-white px-8 py-3 text-lg shadow-lg">
+//               Book Your Stay
+//             </Button>
+//             <Button
+//               size="lg"
+//               variant="outline"
+//               className="border-white text-white hover:bg-white hover:text-amber-700 px-8 py-3 text-lg bg-transparent shadow-lg"
+//             >
+//               Plan an Event
+//             </Button>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* About Muchaan */}
+//       <section id="about" className="py-20 bg-white">
+//         <div className="max-w-6xl mx-auto px-4">
+//           <div className="grid md:grid-cols-2 gap-12 items-center">
+//             <div>
+//               <h2 className="text-4xl font-bold text-stone-800 mb-6">About Muchaan</h2>
+//               <p className="text-lg text-stone-600 mb-6">Muchaan (ਮਚਾਣ) - In olden days Muchaan was a platform erected in a woods/agricultural fields which was used for hunting and served as watch tower for wild animals to protect the crops.</p>
+//               <p className="text-base text-stone-600 mb-6 leading-relaxed">
+//                 Located just 15 minutes from Garhshankar and 1.5 hrs from Chandigarh, Muchaan blends home-style warmth,
+//                 nature, and quiet luxury in a countryside setting.
+//               </p>
+//               <div className="text-lg text-amber-800 font-medium italic">ਮਚਾਣ – ਜਿੱਥੇ ਸੁਆਦ, ਆਰਾਮ ਤੇ ਸੁਕੂਨ ਮਿਲਦੇ ਹਨ।</div>
+//               {/* <p className="text-sm text-stone-500 mt-2">Muchaan – Jithe swaad, aaraam te sukoon milde han.</p> */}
+//             </div>
+//             <div className="relative">
+//               <Image
+//                 src="/images/day-entrance.jpeg"
+//                 alt="Cozy seating area at Muchaan"
+//                 width={600}
+//                 height={400}
+//                 className="rounded-lg shadow-lg"
+//               />
+//             </div>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* Why Choose Muchaan */}
+//       <section className="py-20 bg-stone-50">
+//         <div className="max-w-6xl mx-auto px-4">
+//           <h2 className="text-4xl font-bold text-stone-800 text-center mb-12">Why Choose Muchaan</h2>
+
+//           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+//             <Card className="bg-white border-stone-200 hover:shadow-lg transition-shadow">
+//               <CardContent className="p-6 text-center">
+//                 <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+//                   <Users className="w-8 h-8 text-amber-700" />
+//                 </div>
+//                 <h3 className="text-xl font-semibold text-stone-800 mb-3">Comfortable Stays</h3>
+//                 <p className="text-stone-600 text-sm">
+//                   Rustic charm with modern comforts — ideal for families, couples, or groups.
+//                 </p>
+//               </CardContent>
+//             </Card>
+
+//             <Card className="bg-white border-stone-200 hover:shadow-lg transition-shadow">
+//               <CardContent className="p-6 text-center">
+//                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+//                   <Utensils className="w-8 h-8 text-green-700" />
+//                 </div>
+//                 <h3 className="text-xl font-semibold text-stone-800 mb-3">Home-style Indian Meals</h3>
+//                 <p className="text-stone-600 text-sm">Punjabi favorites and fresh seasonal dishes.</p>
+//               </CardContent>
+//             </Card>
+
+//             <Card className="bg-white border-stone-200 hover:shadow-lg transition-shadow">
+//               <CardContent className="p-6 text-center">
+//                 <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+//                   <Trees className="w-8 h-8 text-emerald-700" />
+//                 </div>
+//                 <h3 className="text-xl font-semibold text-stone-800 mb-3">Private Lawn for Gatherings</h3>
+//                 <p className="text-stone-600 text-sm">Ideal for intimate events and quiet celebrations.</p>
+//               </CardContent>
+//             </Card>
+
+//             <Card className="bg-white border-stone-200 hover:shadow-lg transition-shadow">
+//               <CardContent className="p-6 text-center">
+//                 <div className="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4">
+//                   <Camera className="w-8 h-8 text-rose-700" />
+//                 </div>
+//                 <h3 className="text-xl font-semibold text-stone-800 mb-3">Photo-Ready Corners</h3>
+//                 <p className="text-stone-600 text-sm">Rustic and natural spaces for photos and Instagram.</p>
+//               </CardContent>
+//             </Card>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* Explore Nearby */}
+//       <section id="explore" className="py-20 bg-white">
+//         <div className="max-w-6xl mx-auto px-4">
+//           <h2 className="text-4xl font-bold text-stone-800 text-center mb-12">Explore Nearby</h2>
+
+//           <div className="relative">
+//             <Carousel
+//               opts={{
+//                 align: "start",
+//                 loop: true,
+//               }}
+//               className="w-full"
+//             >
+//               <CarouselContent className="-ml-2 md:-ml-4">
+//                 <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+//                   <Card className="border-stone-200 hover:shadow-lg transition-shadow h-full">
+//                     <CardContent className="p-6">
+//                       <div className="flex items-start gap-3">
+//                         <Church className="w-6 h-6 text-amber-600 mt-1 flex-shrink-0" />
+//                         <div>
+//                           <h3 className="font-semibold text-stone-800 mb-2">Anandpur Sahib</h3>
+//                           <p className="text-sm text-stone-600 mb-3">
+//                             Historic town & Virasat-e-Khalsa. The birthplace of the Khalsa, this sacred city holds
+//                             immense significance in Sikh history and houses the magnificent Virasat-e-Khalsa museum.
+//                           </p>
+//                           <Badge variant="secondary" className="text-xs">
+//                             ~1 hr
+//                           </Badge>
+//                         </div>
+//                       </div>
+//                     </CardContent>
+//                   </Card>
+//                 </CarouselItem>
+
+//                 <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+//                   <Card className="border-stone-200 hover:shadow-lg transition-shadow h-full">
+//                     <CardContent className="p-6">
+//                       <div className="flex items-start gap-3">
+//                         <Mountain className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
+//                         <div>
+//                           <h3 className="font-semibold text-stone-800 mb-2">Bhakra Dam</h3>
+//                           <p className="text-sm text-stone-600 mb-3">
+//                             A concrete gravity dam on the Satluj River forming the Gobind Sagar reservoir. The second
+//                             tallest dam in Asia, it's an engineering marvel offering scenic riverside views and boating
+//                             opportunities.
+//                           </p>
+//                           <Badge variant="secondary" className="text-xs">
+//                             ~1.5 hrs
+//                           </Badge>
+//                         </div>
+//                       </div>
+//                     </CardContent>
+//                   </Card>
+//                 </CarouselItem>
+
+//                 <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+//                   <Card className="border-stone-200 hover:shadow-lg transition-shadow h-full">
+//                     <CardContent className="p-6">
+//                       <div className="flex items-start gap-3">
+//                         <Church className="w-6 h-6 text-red-600 mt-1 flex-shrink-0" />
+//                         <div>
+//                           <h3 className="font-semibold text-stone-800 mb-2">Naina Devi Temple</h3>
+//                           <p className="text-sm text-stone-600 mb-3">
+//                             One of the 51 Shaktipeeths where limbs of Sati fell on Earth. Located in Bilaspur, this holy
+//                             shrine attracts millions of devotees, especially during Navratras and Shravan Ashtami.
+//                           </p>
+//                           <Badge variant="secondary" className="text-xs">
+//                             ~2 hrs
+//                           </Badge>
+//                         </div>
+//                       </div>
+//                     </CardContent>
+//                   </Card>
+//                 </CarouselItem>
+
+//                 <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+//                   <Card className="border-stone-200 hover:shadow-lg transition-shadow h-full">
+//                     <CardContent className="p-6">
+//                       <div className="flex items-start gap-3">
+//                         <Church className="w-6 h-6 text-purple-600 mt-1 flex-shrink-0" />
+//                         <div>
+//                           <h3 className="font-semibold text-stone-800 mb-2">Khuralgarh Sahib</h3>
+//                           <p className="text-sm text-stone-600 mb-3">
+//                             Revered as the place visited by Sri Guru Ravidas after being persuaded by Meera Bai for the
+//                             upliftment of the weaker section. A significant spiritual site with rich historical
+//                             importance.
+//                           </p>
+//                           <Badge variant="secondary" className="text-xs">
+//                             ~15 mins
+//                           </Badge>
+//                         </div>
+//                       </div>
+//                     </CardContent>
+//                   </Card>
+//                 </CarouselItem>
+
+//                 <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+//                   <Card className="border-stone-200 hover:shadow-lg transition-shadow h-full">
+//                     <CardContent className="p-6">
+//                       <div className="flex items-start gap-3">
+//                         <Building className="w-6 h-6 text-gray-600 mt-1 flex-shrink-0" />
+//                         <div>
+//                           <h3 className="font-semibold text-stone-800 mb-2">Jaijon Village</h3>
+//                           <p className="text-sm text-stone-600 mb-3">
+//                             Jaijon, once a key trade hub and the last railway link to Himachal, is now known as the ghost town of Punjab.
+//                             It offers a glimpse into rural history, is famous for its milk sweet "pede," and still holds traces of royal rule and an old secondary school.
+//                           </p>
+//                           <Badge variant="secondary" className="text-xs">
+//                             ~1 hr
+//                           </Badge>
+//                         </div>
+//                       </div>
+//                     </CardContent>
+//                   </Card>
+//                 </CarouselItem>
+//               </CarouselContent>
+//               <CarouselPrevious className="hidden md:flex" />
+//               <CarouselNext className="hidden md:flex" />
+//             </Carousel>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* Gallery */}
+//       <section id="gallery" className="py-20 bg-stone-50">
+//         <div className="max-w-6xl mx-auto px-4">
+//           <div className="text-center mb-12">
+//             <h2 className="text-4xl font-bold text-stone-800 mb-4">Gallery</h2>
+//             <p className="text-stone-600 mb-4">
+//               Instagram Handle:{" "}
+//               <Link href="#" className="text-amber-700 hover:underline">
+//                 @muchaanresort
+//               </Link>{" "}
+//               | Hashtag: <span className="text-amber-700">#MuchaanMoments</span>
+//             </p>
+//           </div>
+
+//           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+//             <div className="aspect-square relative rounded-lg overflow-hidden">
+//               <Image
+//                 src="/image_1.jpeg?height=300&width=300"
+//                 alt="Rooms at Muchaan"
+//                 fill
+//                 className="object-cover hover:scale-105 transition-transform"
+//               />
+//             </div>
+//             <div className="aspect-square relative rounded-lg overflow-hidden">
+//               <Image
+//                 src="/image_2.jpeg?height=300&width=300"
+//                 alt="Gardens at Muchaan"
+//                 fill
+//                 className="object-cover hover:scale-105 transition-transform"
+//               />
+//             </div>
+//             <div className="aspect-square relative rounded-lg overflow-hidden">
+//               <Image
+//                 src="/image_3.jpeg?height=300&width=300"
+//                 alt="Bonfire at Muchaan"
+//                 fill
+//                 className="object-cover hover:scale-105 transition-transform"
+//               />
+//             </div>
+//             <div className="aspect-square relative rounded-lg overflow-hidden">
+//               <Image
+//                 src="/image_4.jpeg?height=300&width=300"
+//                 alt="Sunset at Muchaan"
+//                 fill
+//                 className="object-cover hover:scale-105 transition-transform"
+//               />
+//             </div>
+//             <div className="aspect-square relative rounded-lg overflow-hidden">
+//               <Image
+//                 src="/image_5.jpeg?height=300&width=300"
+//                 alt="Food at Muchaan"
+//                 fill
+//                 className="object-cover hover:scale-105 transition-transform"
+//               />
+//             </div>
+//             <div className="aspect-square relative rounded-lg overflow-hidden">
+//               <Image
+//                 src="/image_6.jpeg?height=300&width=300"
+//                 alt="Guest experiences"
+//                 fill
+//                 className="object-cover hover:scale-105 transition-transform"
+//               />
+//             </div>
+//             <div className="aspect-square relative rounded-lg overflow-hidden">
+//               <Image
+//                 src="/image_7.jpeg?height=300&width=300"
+//                 alt="Lawn area"
+//                 fill
+//                 className="object-cover hover:scale-105 transition-transform"
+//               />
+//             </div>
+//             <div className="aspect-square relative rounded-lg overflow-hidden">
+//               <Image
+//                 src="/PHOTO-2025-07-27-15-41-35.jpg?height=300&width=300" 
+//                 alt="Peaceful corners"
+//                 fill
+//                 className="object-cover hover:scale-105 transition-transform"
+//               />
+//             </div>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* Plan Your Visit */}
+//       <section id="contact" className="py-20 bg-white">
+//         <div className="max-w-4xl mx-auto px-4 text-center">
+//           <h2 className="text-4xl font-bold text-stone-800 mb-8">Plan Your Visit</h2>
+//           <p className="text-lg text-stone-600 mb-8">Muchaan is ideal for:</p>
+
+//           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
+//             <div className="flex items-center gap-2 justify-center">
+//               <CheckCircle className="w-5 h-5 text-green-600" />
+//               <span className="text-stone-700">Weekend stays</span>
+//             </div>
+//             <div className="flex items-center gap-2 justify-center">
+//               <CheckCircle className="w-5 h-5 text-green-600" />
+//               <span className="text-stone-700">Family getaways</span>
+//             </div>
+//             <div className="flex items-center gap-2 justify-center">
+//               <CheckCircle className="w-5 h-5 text-green-600" />
+//               <span className="text-stone-700">Couple retreats</span>
+//             </div>
+//             <div className="flex items-center gap-2 justify-center">
+//               <CheckCircle className="w-5 h-5 text-green-600" />
+//               <span className="text-stone-700">celebrations</span>
+//             </div>
+//             <div className="flex items-center gap-2 justify-center">
+//               <CheckCircle className="w-5 h-5 text-green-600" />
+//               <span className="text-stone-700">Events</span>
+//             </div>
+//           </div>
+
+//           <div className="bg-stone-50 rounded-lg p-8 mb-8">
+//             <div className="flex items-center justify-center gap-2 mb-4">
+//               <MapPin className="w-5 h-5 text-amber-600" />
+//               <span className="text-lg font-medium text-stone-800">Nainwan, near Garhshankar, Punjab</span>
+//             </div>
+
+//             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
+//               <div className="flex items-center gap-2">
+//                 <Phone className="w-4 h-4 text-stone-600" />
+//                 <span className="text-stone-700">+91-9999503000</span>
+//               </div>
+//               <div className="flex items-center gap-2">
+//                 <Mail className="w-4 h-4 text-stone-600" />
+//                 <span className="text-stone-700">Info@muchaan.com</span>
+//               </div>
+//             </div>
+//           </div>
+
+//           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+//             <Button size="lg" className="bg-amber-700 hover:bg-amber-800 text-white px-8 py-3">
+//               Book Now
+//             </Button>
+//             <Button
+//               size="lg"
+//               variant="outline"
+//               className="border-amber-700 text-amber-700 hover:bg-amber-50 px-8 py-3 bg-transparent"
+//             >
+//               Ask a Question
+//             </Button>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* Footer */}
+//       <footer className="bg-stone-800 text-stone-200 py-12">
+//         <div className="max-w-6xl mx-auto px-4">
+//           <div className="grid md:grid-cols-3 gap-8 mb-8">
+//             <div>
+//               <h3 className="text-2xl font-bold text-white mb-4">MUCHAAN</h3>
+//               {/* <p className="text-stone-400 mb-4">Aa jao, thoda jeya sukoon le lo.</p> */}
+//               <div className="flex gap-4">
+//                 <Button size="icon" variant="ghost" className="text-stone-400 hover:text-white">
+//                   <Instagram className="w-5 h-5" />
+//                 </Button>
+//                 <Button size="icon" variant="ghost" className="text-stone-400 hover:text-white">
+//                   <MessageCircle className="w-5 h-5" />
+//                 </Button>
+//                 <Button size="icon" variant="ghost" className="text-stone-400 hover:text-white">
+//                   <ExternalLink className="w-5 h-5" />
+//                 </Button>
+//               </div>
+//             </div>
+
+//             <div>
+//               <h4 className="font-semibold text-white mb-4">Quick Links</h4>
+//               <div className="space-y-2">
+//                 <Link href="#" className="block text-stone-400 hover:text-white transition-colors">
+//                   Home
+//                 </Link>
+//                 <Link href="#" className="block text-stone-400 hover:text-white transition-colors">
+//                   About
+//                 </Link>
+//                 <Link href="#" className="block text-stone-400 hover:text-white transition-colors">
+//                   Gallery
+//                 </Link>
+//                 <Link href="#" className="block text-stone-400 hover:text-white transition-colors">
+//                   Explore
+//                 </Link>
+//                 <Link href="#" className="block text-stone-400 hover:text-white transition-colors">
+//                   Contact
+//                 </Link>
+//               </div>
+//             </div>
+
+//             <div>
+//               <h4 className="font-semibold text-white mb-4">Contact Info</h4>
+//               <div className="space-y-2 text-stone-400">
+//                 <p>Nainwan, near Garhshankar, Punjab</p>
+//                 <p>+91-9999503000</p>
+//                 <p>Info@muchaan.com</p>
+//               </div>
+//             </div>
+//           </div>
+
+//           <div className="border-t border-stone-700 pt-8 text-center text-stone-400">
+//             <p>&copy; 2025 Muchaan. All rights reserved.</p>
+//           </div>
+//         </div>
+//       </footer>
+//     </div>
+//   )
+// }
